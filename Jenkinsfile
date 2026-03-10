@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'phuoc01/doctor-appointment'
+        IMAGE_NAME = 'ntnguyen055/doctor-appointment'
         APP_SERVER_IP = '192.168.100.120'
         APP_SERVER_USER = 'ubuntu'
         DOCKERHUB_CREDS = credentials('220904')
@@ -34,7 +34,7 @@ pipeline {
         stage('4. Đồng bộ Cấu hình (SCP)') {
             steps {
                 echo 'Đẩy tệp cấu hình và Nginx sang App Server...'
-                sshagent(credentials: ['app-server-ssh-key']) {
+                sshagent(credentials: ['123456']) {
                     sh "ssh -o StrictHostKeyChecking=no ${APP_SERVER_USER}@${APP_SERVER_IP} 'mkdir -p ~/doctor-appointment/SQLFile ~/doctor-appointment/nginx'"
                     sh "scp -o StrictHostKeyChecking=no docker-compose.yml ${APP_SERVER_USER}@${APP_SERVER_IP}:~/doctor-appointment/"
                     sh "scp -o StrictHostKeyChecking=no SQLFile/docaspythondb.sql ${APP_SERVER_USER}@${APP_SERVER_IP}:~/doctor-appointment/SQLFile/"
