@@ -46,7 +46,7 @@ pipeline {
         stage('5. Deploy & Auto-Rollback') {
             steps {
                 echo 'Triển khai hệ thống với cơ chế Rollback an toàn...'
-                sshagent(credentials: ['app-server-ssh-key']) {
+                sshagent(credentials: ['123456']) {
                     sh """ssh -o StrictHostKeyChecking=no ${APP_SERVER_USER}@${APP_SERVER_IP} '
                         cd ~/doctor-appointment
                         
