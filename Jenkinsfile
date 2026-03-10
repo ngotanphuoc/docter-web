@@ -64,7 +64,7 @@ pipeline {
                             echo "PHÁT HIỆN LỖI: Container web bị sập! Tiến hành Auto-Rollback..."
                             docker-compose down
                             docker tag ${IMAGE_NAME}:previous ${IMAGE_NAME}:latest
-                            docker-compose up -d
+                            docker-compose up -d --force-recreate
                             echo "Rollback thành công! Đã khôi phục phiên bản cũ."
                             exit 1
                         else
