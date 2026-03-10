@@ -3,7 +3,7 @@ version: '3.8'
 services:
   web:
     # Username Docker Hub 
-    image: ntnguyen055/doctor-appointment:latest
+    image: phuoc01/doctor-appointment:latest
     container_name: django_web
     restart: always
     command: gunicorn docappsystem.wsgi:application --bind 0.0.0.0:8000
